@@ -1,8 +1,8 @@
-#SEW 		Projekt 		2020
+# SEW 		Projekt 		2020
 
-#Maximilian Steiger	|	Elias Ganglberger	|	Fabian Stockmayr
+# Maximilian Steiger	|	Elias Ganglberger	|	Fabian Stockmayr
 
-##Idee: Space invaders
+## Idee: Space invaders
 
 Space Invaders ist ein japanisches Videospiel, das 1978 entwickelt wurde. Inspiriert wurde es von Breakout, Der Krieg der Welten und Star Wars.
 
