@@ -9,6 +9,6 @@ Space Invaders ist ein japanisches Videospiel, das 1978 entwickelt wurde. Inspir
 Das Spiel wird wir gekannt umgesetzt und zusätzlich bauen wir einen dual Player Modus ein. Das heißt das 2 Spieler auf einer Tastatur spielen können. Wir haben 2 Score, 2 Highscore und 2-mal leben. Diese werte können verglichen werden und ein Gewinner kann ermittelt werden. Eventuell auch auf zeit sprich: wie um wie viel überlebt der eine länger.
 Es wird auch mehrere Schwierigkeitsstufen geben in den man spielen kann. Avatar Auswahl und verschiedene Waffen wären auch Möglich.
 
-<img src="image.png"></img>
+<img src="OopProjekt/image.png"></img>
 
 
