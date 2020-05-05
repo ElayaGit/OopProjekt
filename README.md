@@ -16,6 +16,6 @@ Die Aufgabe ist es Alien Raumschiffe mit dem von dir gesteuerten Raumschiff abzu
 	Bei einem gewissen Score wird das Raumschiff upgegradet.
 	Es soll einen 2 Spieler Mode geben, wo man zu zweit auf einem Bildschirm gegen die Aliens kämpft.
 	
-<img src="OopProjekt/image.png"></img>
+
 
 
