@@ -17,7 +17,7 @@ weapon uprgades, diverse and challenging enemy types and a brand new lokal multi
 * double shot ->doubles projectiles
 
 ![alt text](space2.png)
-![alt text](space4.png)
+![alt text](Space4.png)
 
 ## Enemys
 
@@ -27,7 +27,7 @@ standard
 * Captain - quadruple health/ iregular movment
 
 ![alt text](space3.png)
-![alt text](space.png)
+![alt text](Space.png)
 
 ## Intetion
 We are working on this projekt to challenge ourself with reimagining this classic in java.
