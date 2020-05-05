@@ -4,11 +4,18 @@
 
 ## Idee: Space invaders
 
-Space Invaders ist ein japanisches Videospiel, das 1978 entwickelt wurde. Inspiriert wurde es von Breakout, Der Krieg der Welten und Star Wars.
-
-Das Spiel wird wir gekannt umgesetzt und zusätzlich bauen wir einen dual Player Modus ein. Das heißt das 2 Spieler auf einer Tastatur spielen können. Wir haben 2 Score, 2 Highscore und 2-mal leben. Diese werte können verglichen werden und ein Gewinner kann ermittelt werden. Eventuell auch auf zeit sprich: wie um wie viel überlebt der eine länger.
-Es wird auch mehrere Schwierigkeitsstufen geben in den man spielen kann. Avatar Auswahl und verschiedene Waffen wären auch Möglich.
-
+Space Invaders ist ein japanisches Videospiel, das 1978 entwickelt wurde. 
+Die Aufgabe ist es Alien Raumschiffe mit dem von dir gesteuerten Raumschiff abzuschießen.
+## Wir werden es so gestalten: 
+	Das eigene Raumschiff fliegt im All, auf das Raumschiff kommen kleinere Alien Raumschiffe zu, 
+	Ziel ist es diese zu treffen ohne das eines der feindlichen Schiffe hinter das eigene vorbei kommen.
+	Das Raumschiff wird mit den Pfeiltasten navigiert d.h. (links, rechts).
+	Wenn eines der feindlichen Raumschiffe getroffen wird explotiert es und man bekommt plus-Punkte, die
+	zu dem Score hinzugefügt werden.
+	Desto mehr Gegner man trifft desto schneller kommen sie auf dich zu.
+	Bei einem gewissen Score wird das Raumschiff upgegradet.
+	Es soll einen 2 Spieler Mode geben, wo man zu zweit auf einem Bildschirm gegen die Aliens kämpft.
+	
 <img src="OopProjekt/image.png"></img>
 
 
