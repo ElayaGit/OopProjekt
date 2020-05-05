@@ -7,8 +7,8 @@ We take the simple gameplay formula of defending your base against an army of ap
 weapon uprgades, diverse and challenging enemy types and a brand new lokal multiplayer.
 
 
-![alt text](space2.png)
-
+![alt text](menu.png)
+![alt text](images2.png)
 
 ## Weapon Upgrades
 
@@ -16,7 +16,8 @@ weapon uprgades, diverse and challenging enemy types and a brand new lokal multi
 * wide shot -> doubles shoting hitboxs
 * double shot ->doubles projectiles
 
-//graphik
+![alt text](space2.png)
+![alt text](space4.png)
 
 ## Enemys
 
@@ -25,7 +26,8 @@ standard
 * Officer - faster/ double health
 * Captain - quadruple health/ iregular movment
 
-// graphik
+![alt text](space3.png)
+![alt text](space.png)
 
 ## Intetion
 We are working on this projekt to challenge ourself with reimagining this classic in java.
