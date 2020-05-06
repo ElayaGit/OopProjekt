@@ -55,3 +55,5 @@ to-do
 4. Player
 5. bullets
 6. multiplayer       
+
+![alt text](imagesClass.png)
