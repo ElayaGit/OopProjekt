@@ -2,9 +2,10 @@
 
 ## Description
 
-Our version of Space Invaders will be a reimagination of the acrade classic realised in Java.
-We take the simple gameplay formula of defending your base against an army of aproching alien spacecrafts and modernise it with new faster and smother gameplay,
-weapon uprgades, diverse and challenging enemy types and a brand new lokal multiplayer.
+Our version of Space Invaders will be a reimagination of the arcade classic realised in Java. 
+We take the simple gameplay formula of defending your base against an army of approaching 
+alien spacecrafts and modernise it with new faster and smother gameplay, weapon upgrades, diverse 
+and challenging enemy types and a brand new local multiplayer.
 
 
 ![alt text](menu.png)
@@ -12,9 +13,9 @@ weapon uprgades, diverse and challenging enemy types and a brand new lokal multi
 
 ## Weapon Upgrades
 
-* fast shot -> doubles shoting speed
-* wide shot -> doubles shoting hitboxs
-* double shot ->doubles projectiles
+*    fast shot -> doubles shooting speed
+*    wide shot -> doubles shooting hitboxes
+*    double shot -> doubles projectiles
 
 ![alt text](space2.png)
 ![alt text](Space4.png)
@@ -24,32 +25,30 @@ weapon uprgades, diverse and challenging enemy types and a brand new lokal multi
 standard
 
 * Officer - faster/ double health
-* Captain - quadruple health/ iregular movment
+* Captain - quadruple health/ irregular movement
 
 ![alt text](space3.png)
 ![alt text](Space.png)
 
-## Intetion
-We are working on this projekt to challenge ourself with reimagining this classic in java.
-The solid singelplayer mode will be suported with a semi competetiv CooP mode in which the players work together to defeat de alien threat but also will be able to compare theyr scores.
+## Intention
+We are working on this project to challenge our self with reimagining this classic in java. 
+The solid singe player mode will be supported with a semi competitive Coop mode in which the players 
+work together to defeat de alien threat but also will be able to compare their scores.
 
 
-
-
-
-|   |   |  
+|   |   |
 |---|---|
-| Gametype  | Top Down Shoter    |
-| Language  | Java         |
-| Goal      |Defeat all enemysGraphik 
-| interface |  Processing           |
-| IDEA                 | 	IntelliJ and Netbeans |
+| Game type  | Top Down Shooter    |
+| Language | Java         |
+| Goal      |Defeat all enemy’s Graphic | 
+| interface | Processing           |
+| IDEA                 |     IntelliJ and Netbeans |
 
 
 
 to-do
 
-1. Menue
+1. Menu
 2. Interface / background / Score ...
 3. enemies 
 4. Player
