@@ -18,27 +18,29 @@ public class Processing extends PApplet{
         
         spaceship = loadImage("images/space2.png");
         x = 800;
-        y = 400;
+        y = 530;
         xSpeed = 3;
     }
     
     @Override
     public void draw(){
-    /*int i = 800;
-    do{
-        image(spaceship, i++, 510);
-    }while(keyPressed);
-        */
-    if(x >= 900) xSpeed = -xSpeed;
-    if(x <= 100) xSpeed = -xSpeed;
-    
-    x = x + xSpeed;
-    
-    image(spaceship, x, y, 300, 300);
-            
+    System.out.println("X:" + x + "y:" + y);
+        if (keyPressed && keyCode == LEFT) {
+            x -= 5;
+            background(0);
+        }
+        if (keyPressed && keyCode == RIGHT) {
+            x += 5;
+            background(0);
+        }
+        if (x >= 1600) {
+            x = 1;
+        }
+        if (x <= 0) {
+            x = 1500;
+        }
+        image(spaceship, x, y, 300, 300);
+        
     }
-    
-    
-    
 
 }
