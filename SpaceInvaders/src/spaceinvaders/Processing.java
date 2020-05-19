@@ -4,9 +4,9 @@ package spaceinvaders;
 import processing.core.*;
 public class Processing extends PApplet{
     PImage spaceship;
-    PImage enemy;
     int y;
     int x;
+    PImage enemy;
     int z;
     int w;
     int scoreX = 100;
@@ -22,23 +22,19 @@ public class Processing extends PApplet{
     @Override
     public void setup(){
         background(000);
-        
         spaceship = loadImage("images/space2.png");
-        enemy = loadImage("images/space3.jpg");
-        z = 800;
-        w = 200;
         x = 800;
         y = 530;
         xSpeed = 3;
-    }
-    
-    public void enemy(){
-        
+        enemy = loadImage("images/space3.png");
+        z = 800;
+        w = 200;
     }
     
     public void Score(){
         text("Score: ", scoreX, scoreY);
         textSize(50);
+         
     }
     
     @Override
@@ -60,8 +56,9 @@ public class Processing extends PApplet{
         }
         
         image(spaceship, x, y, 300, 300);
-        image(enemy, x, y, 140, 100);
+        image(enemy, z, w, 140, 100);
         Score();
+          
     }
 
 }
