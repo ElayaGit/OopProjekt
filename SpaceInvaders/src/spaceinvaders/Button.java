@@ -2,7 +2,7 @@
 package spaceinvaders;
 
 import processing.core.*;
-public class Button  extends PApplet{
+public class Button extends PApplet{
     PImage my_image;
     int button_x1 = 300;
     int button_y1 = 300;
@@ -26,7 +26,6 @@ public class Button  extends PApplet{
     public void button(){
         fill(0, 0, 0);
         rect(button_x1, button_y1, button_x1, button_x2 - button_y2 - button_y1);
-        
         fill(255);
         text("New Game", button_x1 + 20, button_y1 + 44);
         textSize(40);
