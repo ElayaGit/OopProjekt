@@ -4,12 +4,16 @@ import processing.core.*;
 
 public class Processing extends PApplet {
 
+// spaceship
     PImage spaceship;
     int y;
     int x;
+// enemy 
     PImage enemy;
     int z;
     int w;
+
+//score
     int scoreX = 100;
     int scoreY = 100;
     int scoreX1 = 100;
@@ -35,24 +39,32 @@ public class Processing extends PApplet {
         
     }
 
+/**
+displays the score
+*/
     public void Score() {
-        text("Score: ", scoreX, scoreY);
         textSize(50);
         int cnt = 0;
+        text("Score: "+cnt, scoreX, scoreY);
+       
         
     }
 
     @Override
     public void draw() {
-        System.out.println("X:" + x + "y:" + y);
+
+        //System.out.println("X:" + x + "y:" + y);
+//move left
         if (keyPressed && keyCode == LEFT) {
             x -= 5;
             background(0);
         }
+//move right
         if (keyPressed && keyCode == RIGHT) {
             x += 5;
             background(0);
         }
+
         if (x >= 1600) {
             x = 1;
         }

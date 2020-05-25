@@ -2,34 +2,72 @@
 package spaceinvaders;
 
 import processing.core.*;
+import controlP5.*;
+
+
+/**
+this is the Main menu
+*/
 public class Button extends PApplet{
-    PImage my_image;
-    int button_x1 = 300;
-    int button_y1 = 300;
-    int button_x2 = 800;
-    int button_y2 = 400;
-    
+
+    ControlP5 cp5;
+    String text;
+    PFont font;
+
+    //background Image
+    PImage bg;
+//position for the button
+    int button_x1 = 170;
+    int button_x2 = 260;
+
+    int button_y1 = 400;
+    int button_y2 = 100;
+
+    //color
+  int c = color(0, 0, 0, 198); 
+
     @Override
     public void settings(){
-        size(800, 800);
+        size(600, 900);
     }
     
     @Override
     public void setup(){
-        
-    }
+    bg = loadImage("images/menuBgf.png");
+    cp5 = new ControlP5(this);
+    cp5.addTextfield("")
+                    .setPosition(200, 600)
+                    .setFont(createFont("ethnocentric",20))
+                    .setColor(color(255))
+                    .setColorBackground(color(c))
+                    .setSize(200, 50)
+                    .setColorForeground(color(c))
+                    .setAutoClear(true);
+    font = createFont("ethnocentric", 30);
+}
     
     @Override
     public void draw(){
-        button();
+//calls background and the button
+    background(bg);
+    button();
+
+
+
+      // System.out.println("X: "+mouseX+"Y: "+mouseY);
     }
     public void button(){
-        fill(0, 0, 0);
-        rect(button_x1, button_y1, button_x1, button_x2 - button_y2 - button_y1);
+      
+        fill(c);
+
+        rect(button_x1, button_y1, button_x2,button_y2);
         fill(255);
-        text("New Game", button_x1 + 20, button_y1 + 44);
         textSize(40);
+        textFont(font);
+        text("New Game", button_x1 + 10, button_y1 + 60);
+       
     }
+
     void openGame(){
         int x = 300;
         int y = 300;
@@ -40,7 +78,8 @@ public class Button extends PApplet{
         
     }
     public void mousePressed(){
-        if(mouseX > button_x1 && mouseX < button_x2 && mouseY > button_y1 && mouseY < button_y2){
+            
+        if((mouseX > button_x1 && mouseX < (button_x1+button_x2)) && (mouseY > button_y1 && mouseY < (button_y1+button_y2))){
             openGame();
             
         }
