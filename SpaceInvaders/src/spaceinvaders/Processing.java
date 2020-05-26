@@ -20,6 +20,12 @@ public class Processing extends PApplet {
     int scoreY1 = 100;
     int xSpeed;
 
+
+// is shot
+boolean isShot = false;
+
+
+
     @Override
     public void settings() {
         size(1900, 900);
@@ -38,7 +44,7 @@ public class Processing extends PApplet {
         w = 200;
 
         
-        image(enemy, z, w, 140, 100);
+      
     }
 
 /**
@@ -93,12 +99,16 @@ displays the score
                // background(0);
             }
             if(x+70 > z && x+70 < z+140){
-                
-                image(enemy, z+1000, w+1000, 140, 100);
-                 //background(0);
+                isShot = true;
             }
            
            
+        }
+
+        if(isShot){
+            image(enemy, z+1000, w+1000, 140, 100);
+        }else{
+            image(enemy, z, w, 140, 100);
         }
         image(spaceship, x, y, 150, 150);
         Score();
