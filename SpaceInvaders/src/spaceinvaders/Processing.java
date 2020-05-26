@@ -1,7 +1,7 @@
 package spaceinvaders;
 
 import processing.core.*;
-
+//import processing.sound.*;
 public class Processing extends PApplet {
 
 // spaceship
@@ -12,6 +12,9 @@ public class Processing extends PApplet {
     PImage enemy;
     int z;
     int w;
+
+PImage laser;
+
 
 //score
     int scoreX = 100;
@@ -46,7 +49,7 @@ int cnt = 0;
         z = 800;
         w = 200;
 
-        
+      laser = loadImage("images/laser.png");
       
     }
 
@@ -96,7 +99,8 @@ displays the score
            for(int i = y; i>0; i--){
                   //bullet
                 delay(1);
-                rect(x+70,i,10,100); 
+                //rect(x+70,i,10,100); 
+                image(laser,x+70,i,10,100);
                 System.out.println(i);
                // background(0);
             }
@@ -110,8 +114,8 @@ displays the score
 
         if(isShot){
             image(enemy, z-1000, w-1000, 0, 0);
-            background(0);
-            
+           // background(0);
+          
             if(cntup){
                 cnt++;
                 cntup = false;
@@ -121,8 +125,9 @@ displays the score
         }else{
             image(enemy, z, w, 140, 100);
         }
+        Score(); 
         image(spaceship, x, y, 150, 150);
-        Score();
+        
 
     }
 
