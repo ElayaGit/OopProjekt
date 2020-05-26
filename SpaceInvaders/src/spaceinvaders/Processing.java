@@ -24,6 +24,9 @@ public class Processing extends PApplet {
 // is shot
 boolean isShot = false;
 
+//score
+boolean cntup = false;
+int cnt = 0;
 
 
     @Override
@@ -52,7 +55,6 @@ displays the score
 */
     public void Score() {
         textSize(50);
-        int cnt = 0;
         text("Score: "+cnt, scoreX, scoreY);
          
     }
@@ -100,6 +102,7 @@ displays the score
             }
             if(x+70 > z && x+70 < z+140){
                 isShot = true;
+                cntup = true;
             }
            
            
@@ -107,6 +110,13 @@ displays the score
 
         if(isShot){
             image(enemy, z+1000, w+1000, 140, 100);
+
+            if(cntup){
+                cnt++;
+                cntup = false;
+            }
+            
+            
         }else{
             image(enemy, z, w, 140, 100);
         }
