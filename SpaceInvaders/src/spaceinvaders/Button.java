@@ -44,6 +44,8 @@ public class Button extends PApplet{
                     .setColorForeground(color(c))
                     .setAutoClear(true);
     font = createFont("ethnocentric", 30);
+
+  //Processing pr = new Processing();
 }
     
     @Override
@@ -69,19 +71,19 @@ public class Button extends PApplet{
     }
 
     void openGame(){
-        int x = 300;
-        int y = 300;
         Processing.main("spaceinvaders.Processing");
+        //pr.Score();
     }
     
     public void closeMenu(){
-        
+       // exit(); 
     }
     public void mousePressed(){
             
         if((mouseX > button_x1 && mouseX < (button_x1+button_x2)) && (mouseY > button_y1 && mouseY < (button_y1+button_y2))){
-            openGame();
-            
+                   
+             openGame();
+         
         }
     }
      
