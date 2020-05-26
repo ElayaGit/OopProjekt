@@ -33,17 +33,19 @@ public class Button extends PApplet{
     
     @Override
     public void setup(){
+
+    font = createFont("ethnocentric", 30);
     bg = loadImage("images/menuBgf.png");
     cp5 = new ControlP5(this);
     cp5.addTextfield("")
                     .setPosition(200, 600)
-                    .setFont(createFont("ethnocentric",20))
+                    .setFont(font)
                     .setColor(color(255))
                     .setColorBackground(color(c))
                     .setSize(200, 50)
                     .setColorForeground(color(c))
                     .setAutoClear(true);
-    font = createFont("ethnocentric", 30);
+   
 
   //Processing pr = new Processing();
 }

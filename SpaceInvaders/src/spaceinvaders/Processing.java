@@ -36,7 +36,7 @@ int cnt = 0;
 
     @Override
     public void setup() {
-        background(000);
+        background(0);
         spaceship = loadImage("images/space2.png");
         x = 800;
         y = 700;
@@ -109,8 +109,9 @@ displays the score
         }
 
         if(isShot){
-            image(enemy, z+1000, w+1000, 140, 100);
-
+            image(enemy, z-1000, w-1000, 0, 0);
+            background(0);
+            
             if(cntup){
                 cnt++;
                 cntup = false;
