@@ -2,18 +2,25 @@ package spaceinvaders;
 
 import processing.core.*;
 
-public class spaceshipClass {
+public class spaceshipClass extends PApplet {
 
     //PImage spaceship;
     public int shipX;
     public int shipY;
-    //spaceship = loadImage("images/space2.png");  
+   
+    public void setup() {
+        PImage spaceship = loadImage("images/space2.png");  
+    }
 
+    public spaceshipClass(int shipX, int shipY) {
 
-    public spaceshipClass(int shipX,int shipY){
-    
         this.shipX = shipX;
         this.shipY = shipY;
 
     }
+
+
+
+
+
 }
