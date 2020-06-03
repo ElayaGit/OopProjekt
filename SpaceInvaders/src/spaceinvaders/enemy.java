@@ -2,18 +2,18 @@
 package spaceinvaders ;
 
 import processing.core.*;
-public class enemy extends PApplet{
 
-    PImage enemy;
-    int enemyX = 900;
-    int enemyY = 200;
+public class enemy{
 
+    public int enemyX;
+    public int enemyY;
 
+    public enemy(int enemyX,int enemyY){
+    
+        this.enemyX = enemyX;
+        this.enemyY = enemyY;
 
+    }
 
-   @Override
-    public void draw() {
-      enemy = loadImage("images/space3.png");
- 
 }
-}
+

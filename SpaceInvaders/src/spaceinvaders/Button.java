@@ -16,7 +16,7 @@ public class Button extends PApplet{
 
     //background Image
     PImage bg;
-//position for the button
+    //position for the button
     int button_x1 = 170;
     int button_x2 = 260;
 
@@ -24,7 +24,7 @@ public class Button extends PApplet{
     int button_y2 = 100;
 
     //color
-  int c = color(0, 0, 0, 198); 
+    int c = color(0, 0, 0, 198); 
 
     @Override
     public void settings(){
@@ -33,7 +33,6 @@ public class Button extends PApplet{
     
     @Override
     public void setup(){
-
     font = createFont("ethnocentric", 30);
     bg = loadImage("images/menuBgf.png");
     cp5 = new ControlP5(this);

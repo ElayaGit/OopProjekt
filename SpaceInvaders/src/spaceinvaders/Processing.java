@@ -6,14 +6,16 @@ public class Processing extends PApplet {
 
 // spaceship
     PImage spaceship;
-    int y;
-    int x;
-// enemy 
-    PImage enemy;
-    int z;
-    int w;
+    int y = 700;
+    int x = 800;
 
-PImage laser;
+// enemy 
+    PImage enemyIMG;
+    enemy enemyC = new enemy(800, 200);
+
+//laser
+    PImage laser;
+    laserClass laserC = new laserClass(10, 100);
 
 
 //score
@@ -21,15 +23,14 @@ PImage laser;
     int scoreY = 100;
     int scoreX1 = 100;
     int scoreY1 = 100;
-    int xSpeed;
 
 
-// is shot
-boolean isShot = false;
+    // is shot
+    boolean isShot = false;
 
-//score
-boolean cntup = false;
-int cnt = 0;
+    //score
+    boolean cntup = false;
+    int cnt = 0;
 
 
     @Override
@@ -40,16 +41,17 @@ int cnt = 0;
     @Override
     public void setup() {
         background(0);
+//spaceship
         spaceship = loadImage("images/space2.png");
-        x = 800;
-        y = 700;
-        xSpeed = 3;
-        
-        enemy = loadImage("images/space3.png");
-        z = 800;
-        w = 200;
 
-      laser = loadImage("images/laser.png");
+        
+        
+//enemy
+        enemyIMG = loadImage("images/space3.png");
+
+        
+//laser
+       laser = loadImage("images/laser.png");
       
     }
 
@@ -91,6 +93,7 @@ displays the score
 
 // shoot
         if (keyPressed && key == 32) {
+
             int bulletX1 = x;
             int bulletX2 = 100;
             int bulletY1 = y;
@@ -101,11 +104,11 @@ displays the score
                 delay(1);
                 //background(0);
                 //rect(x+70,i,10,100); 
-                image(laser,x+70,i,10,100);
+                image(laser,x+70,i,laserC.laserWidth,laserC.laserHeight);
                 System.out.println(i);
                // background(0);
             }
-            if(x+70 > z && x+70 < z+140){
+            if(x+70 > enemyC.enemyX && x+70 < enemyC.enemyX+140){
                 isShot = true;
                 cntup = true;
             }
@@ -114,9 +117,9 @@ displays the score
         }
 
         if(isShot){
-        z = z-1000;
-        w = w-1000;
-            image(enemy, z, w, 0, 0);
+        enemyC.enemyX = enemyC.enemyX-1000;
+        enemyC.enemyY = enemyC.enemyY-1000;
+            image(enemyIMG, enemyC.enemyX, enemyC.enemyY, 0, 0);
            // background(0);
           
             if(cntup){
@@ -127,7 +130,7 @@ displays the score
             //delay(1000);
             //background(0);
         }else{
-            image(enemy, z, w, 140, 100);
+            image(enemyIMG, enemyC.enemyX, enemyC.enemyY, 140, 100);
         }
         Score(); 
         image(spaceship, x, y, 150, 150);
