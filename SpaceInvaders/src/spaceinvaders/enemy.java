@@ -1,15 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-package spaceinvaders;
+package spaceinvaders ;
 
-/**
- *
- * @author maxim
- */
-public class enemy {
+import processing.core.*;
+public class enemy extends PApplet{
 
+    PImage enemy;
+    int enemyX = 900;
+    int enemyY = 200;
+
+
+
+
+   @Override
+    public void draw() {
+      enemy = loadImage("images/space3.png");
+ 
+}
 }

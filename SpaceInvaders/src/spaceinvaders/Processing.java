@@ -99,6 +99,7 @@ displays the score
            for(int i = y; i>0; i--){
                   //bullet
                 delay(1);
+                //background(0);
                 //rect(x+70,i,10,100); 
                 image(laser,x+70,i,10,100);
                 System.out.println(i);
@@ -113,7 +114,9 @@ displays the score
         }
 
         if(isShot){
-            image(enemy, z-1000, w-1000, 0, 0);
+        z = z-1000;
+        w = w-1000;
+            image(enemy, z, w, 0, 0);
            // background(0);
           
             if(cntup){
@@ -121,7 +124,8 @@ displays the score
                 cntup = false;
             }
             
-            
+            //delay(1000);
+            //background(0);
         }else{
             image(enemy, z, w, 140, 100);
         }
