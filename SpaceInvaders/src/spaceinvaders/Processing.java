@@ -49,23 +49,32 @@ public class Processing extends PApplet {
     @Override
     public void draw() {
 
+//prints out the position of the spaceship
     System.out.println("X"+shipC.shipX+"Y"+shipC.shipY);
 
-
+//move method is called to move the spaceship
         move();
 
-// shoot
+// shoot method iscalled to shoot a bullet
+       shoot();
 
+    }
+
+/******************************************************************************/
+
+//methodes
+
+    public void shoot(){
         if (keyPressed && key == 32) {
 
-           
-            
            for(int i = shipC.shipY; i>0; i--){
 //bullet
                 delay(1);
                 image(laser,shipC.shipX+70,i,laserC.laserWidth,laserC.laserHeight);
                 System.out.println(i);
             }
+
+            delay(1000);
             if(shipC.shipX+70 > enemyC.enemyX && shipC.shipX+70 < enemyC.enemyX+140){
                 isShot = true;
                 cntup = true;
@@ -78,7 +87,7 @@ public class Processing extends PApplet {
             enemyC.enemyX = enemyC.enemyX-1000;
             enemyC.enemyY = enemyC.enemyY-1000;
             image(enemyIMG, enemyC.enemyX, enemyC.enemyY, 0, 0);
-      
+            
             if(cntup){
 //img ändern bei gewissem score
                 if(scoreC.cnt == 1){
@@ -94,22 +103,20 @@ public class Processing extends PApplet {
         }else{
             image(enemyIMG, enemyC.enemyX, enemyC.enemyY, 140, 100);
         }
-        scoreChange(); 
+        
+        displayScore(); 
         image(spaceship, shipC.shipX, shipC.shipY, 150, 150);
         
-
-    }
-
-/******************************************************************************/
-
-//methodes
-
-
+        
+}
 /**
 displays the score
 because of the text it is not posible to change the score in the score class
 */
-    public void scoreChange() {
+    public void displayScore() {
+        fill(0);
+        rect(0,0,300,300);
+        fill(255);
         textSize(50);
         text("Score: "+scoreC.cnt, scoreC.scoreX, scoreC.scoreY);    
     }
