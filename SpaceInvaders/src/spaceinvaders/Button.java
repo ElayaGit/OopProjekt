@@ -11,19 +11,22 @@ public class Button extends PApplet {
     ControlP5 cp5;
     String text;
     PFont font;
-    String user;
+    String user = "user";
     //background Image
     PImage bg;
     //position for the button
     int button_x1 = 170;
     int button_x2 = 260;
-
     int button_y1 = 400;
     int button_y2 = 100;
 
     //color
     int c = color(0, 0, 0, 198);
     int cHover = color(0, 0, 0, 180);
+
+
+    public Button(){
+    }
     @Override
     public void settings() {
         size(600, 900);
@@ -33,6 +36,7 @@ public class Button extends PApplet {
     public void setup() {
         font = createFont("ethnocentric", 30);
         bg = loadImage("images/menuBgf.png");
+
         cp5 = new ControlP5(this);
         cp5.addTextfield("name")
             .setCaptionLabel("")
@@ -55,7 +59,6 @@ public class Button extends PApplet {
             .setColorForeground(color(c))
             .setColorActive(cHover); 
         
-         user = cp5.get(Textfield.class, "name").getText();
         //Processing pr = new Processing();
     }
 

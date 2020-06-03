@@ -1,30 +1,38 @@
 package spaceinvaders;
-
+import java.util.Random;
 import processing.core.*;
+import java.util.Timer;
 //import processing.sound.*;
 public class Processing extends PApplet {
-
+    Timer timer = new Timer();
     // spaceship
-    PImage spaceship;
+    PImage spaceship1,spaceship2;
     spaceshipClass shipC = new spaceshipClass(800, 700);
 
     // enemy 
-    PImage enemyIMG;
+    PImage enemyIMG,enemyIMGexpl;
     enemyClass enemyC = new enemyClass(800, 200);
 
     //laser
     PImage laser;
-    laserClass laserC = new laserClass(10, 100);
+    laserClass laserC = new laserClass(10, 1070);
 
     //score
     scoreClass scoreC = new scoreClass(100, 100, 0);
 
+    //button
+    Button button = new Button();
     // is shot
     boolean isShot = false;
 
     //score
     boolean cntup = false;
 
+    //last pos of ship
+    int lastPosX = 0;
+
+    //for the fire animation
+    boolean changeShip;
 
 
     @Override
@@ -37,13 +45,15 @@ public class Processing extends PApplet {
         background(0);
 
         //spaceship
-        spaceship = loadImage("images/space2.png");
+        spaceship1 = loadImage("images/rocket.gif");
+       // spaceship2 = loadImage("images/space2.png");
         //shipC.setup();
         //enemy
         enemyIMG = loadImage("images/space3.png");
+        enemyIMGexpl = loadImage("images/space3expl.png");
         //laser
         laser = loadImage("images/laser.png");
-
+        //startCounter();
 
     }
 
@@ -55,10 +65,12 @@ public class Processing extends PApplet {
 
         //move method is called to move the spaceship
         move();
-
         // shoot method iscalled to shoot a bullet
         shoot();
 
+            image(spaceship1, shipC.shipX, shipC.shipY, 150, 150);
+          
+       
     }
 
     /******************************************************************************/
@@ -66,17 +78,19 @@ public class Processing extends PApplet {
     //methodes
 
     public void shoot() {
+        
         if (keyPressed && key == 32) {
-
-            for (int i = shipC.shipY; i > 0; i--) {
+            //for (int i = shipC.shipY; i > 0; i--) {
                 //bullet
-                delay(1);
-                image(laser, shipC.shipX + 70, i, laserC.laserWidth, laserC.laserHeight);
-                System.out.println(i);
-            }
+                //delay(1);
+                image(laser, shipC.shipX + 70, -110, laserC.laserWidth, laserC.laserHeight);
+                //System.out.println(i);
+            //}
 
             delay(1000);
-            if (shipC.shipX + 70 > enemyC.enemyX && shipC.shipX + 70 < enemyC.enemyX + 140) {
+            if (shipC.shipX + 70 > enemyC.enemyX + 30 && shipC.shipX + 70 < enemyC.enemyX + 100) {
+               //change enemy to dead
+                image(enemyIMGexpl, enemyC.enemyX, enemyC.enemyY, 140, 100);
                 isShot = true;
                 cntup = true;
             }
@@ -85,11 +99,11 @@ public class Processing extends PApplet {
         }
 
         if (isShot) {
-            enemyC.enemyX = enemyC.enemyX - 1000;
-            enemyC.enemyY = enemyC.enemyY - 1000;
-            image(enemyIMG, enemyC.enemyX, enemyC.enemyY, 0, 0);
-
+            
             if (cntup) {
+                lastPosX = shipC.shipX;
+                enemyC.enemyX = (int)(Math.random() * 800 + 300);
+            
                 //img ändern bei gewissem score
                 if (scoreC.cnt == 1) {
                     //img ändern
@@ -101,26 +115,28 @@ public class Processing extends PApplet {
 
             //delay(1000);
             //background(0);
-        } else {
+        }
+        
+        displayScore();
+        
+        
+        //wenn sich das raumschif wieder bewegt wird ein neuer gegner gesetzt
+        if(shipC.shipX != lastPosX){
             image(enemyIMG, enemyC.enemyX, enemyC.enemyY, 140, 100);
         }
-
-        displayScore();
-        image(spaceship, shipC.shipX, shipC.shipY, 150, 150);
-
-
-    }
+}
     /**
     displays the score
     because of the text it is not posible to change the score in the score class
     */
     public void displayScore() {
-        fill(0);
-        rect(0, 0, 300, 300);
+        fill(200);
+        rect(0, 0, 400, 130);
         fill(255);
         textSize(50);
-        text("Score: " + scoreC.cnt, scoreC.scoreX, scoreC.scoreY);
+        text("Score: " +scoreC.cnt, scoreC.scoreX, scoreC.scoreY);
     }
+// +button.getUsername()
     /** is it needet?
      */
     public void bullet() {
@@ -161,8 +177,19 @@ public class Processing extends PApplet {
         }
 
     }
+/*
+    public void startCounter(){
 
-
+    
+    timer.schedule(new TimerTask() {
+    @Override
+        public void run() {
+        Processing.main("spaceinvaders.Button");
+        }
+    }, 2*60*1000);
+    
+    }
+*/
 
 
 }
