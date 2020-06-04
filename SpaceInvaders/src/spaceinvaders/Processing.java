@@ -111,18 +111,18 @@ public class Processing extends PApplet {
                 enemyC.enemyX = (int)(Math.random() * 800 + 300);
             
                 //img ändern bei gewissem score und endsrceen
-                if (scoreC.cnt == 1) {
+                if (scoreC.cnt == 0) {
                     enemyIMG = loadImage("images/space4.png");
                     enemyIMGexpl = loadImage("images/space4expl.png");
                     background = loadImage("images/backgroundIMG2.png");
                 }
 
-                if (scoreC.cnt == 2) {
+                if (scoreC.cnt == 1) {
                     enemyIMG = loadImage("images/space5.png");
                     enemyIMGexpl = loadImage("images/space5expl.png");
                     background = loadImage("images/backgroundIMG3.png");
                 }
-                if(scoreC.cnt == 3){
+                if (scoreC.cnt == 2){
                     shipC.shipY = -1000;
                     openEnd();
                 }

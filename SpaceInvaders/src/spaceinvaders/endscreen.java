@@ -34,17 +34,7 @@ public class endscreen extends PApplet {
         bg = loadImage("images/endscreenIMG.png");
 
         cp5 = new ControlP5(this);
-        cp5.addTextfield("name")
-            .setCaptionLabel("")
-            .setPosition(200, 600)
-            .setFont(font)
-            .setColor(color(255))
-            .setColorBackground(color(c))
-            .setSize(200, 50)
-            .setColorForeground(color(c))
-            .setAutoClear(true)
-            .setColorActive(cHover); 
-        
+       
 
 
         cp5.addBang("submit")
@@ -55,6 +45,15 @@ public class endscreen extends PApplet {
             .setColorForeground(color(c))
             .setColorActive(cHover); 
         
+
+        cp5.addBang("exitGame")
+            .setCaptionLabel("")
+            .setPosition(button_x1, button_y1+200)
+            .setColorBackground(color(c))
+            .setSize(button_x2, button_y2)
+            .setColorForeground(color(c))
+            .setColorActive(cHover); 
+
         background(bg);
     }
 
@@ -62,27 +61,42 @@ public class endscreen extends PApplet {
     public void draw() {
         background(bg);
         retryButton();
+        exitButton();
 
     }
 
-public void retryButton() {
+    public void retryButton() {
 
         fill(255);
         textSize(40);
         textFont(font);
-        text("RETRY", button_x1 + 60, button_y1 + 60);
-       
+        text("RETRY", button_x1 + 60, button_y1 + 60);  
+    }
 
-}
+    public void exitButton() {
+
+        fill(255);
+        textSize(40);
+        textFont(font);
+        text("Exit", button_x1 + 80, button_y1 + 260);  
+    }
+
+/**
+Opens a new game
+*/
     public void submit() {
 
-        if ((mouseX > button_x1 && mouseX < (button_x1 + button_x2)) && (mouseY > button_y1 && mouseY < (button_y1 + button_y2))) {
-
-            
                 openGame();
-            
-            
-        }
+                
+    }
+    
+/**
+exits te Game
+*/
+    public void exitGame() {
+
+                exit();
+                
     }
 /*
 the openGame Method if for opening the game useing Processing
