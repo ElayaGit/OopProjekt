@@ -94,7 +94,7 @@ public class Processing extends PApplet {
                 //System.out.println(i);
             //}
 
-            delay(1000);
+           //delay(1000);
             if (shipC.shipX + 70 > enemyC.enemyX + 30 && shipC.shipX + 70 < enemyC.enemyX + 100) {
                //change enemy to dead
                 image(enemyIMGexpl, enemyC.enemyX, enemyC.enemyY, 140, 100);
@@ -125,6 +125,7 @@ public class Processing extends PApplet {
                 }
                 if (scoreC.cnt == 2){
                     shipC.shipY = -1000;
+                    enemyC.enemyY = -1000;
                     openEnd();
                 }
 
