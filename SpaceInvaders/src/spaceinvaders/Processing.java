@@ -16,9 +16,9 @@ public class Processing extends PApplet {
     spaceshipClass shipC = new spaceshipClass(800, 650,"images/space1.png");
 
     // enemy 
-    PImage enemyIMG,enemyIMGexpl;
+    PImage enemyIMG,enemyIMGexpl,enemyIMG2,enemyIMGexpl2;
     enemyClass enemyC = new enemyClass(800, 200);
-
+    enemyClass enemyC2 = new enemyClass(400, 240);
     //laser
     PImage laser;
     laserClass laserC = new laserClass(10, 900,"images/laser.png");
@@ -41,6 +41,8 @@ public class Processing extends PApplet {
     //for the fire animation
     boolean changeShip;
     
+    //second ship
+    boolean secondShip;
     
     @Override
     public void settings() {
@@ -58,6 +60,10 @@ public class Processing extends PApplet {
         //enemy
         enemyIMG = loadImage(enemyC.enemy1);
         enemyIMGexpl = loadImage(enemyC.enemy1expl);
+        
+        //enemy 2
+        enemyIMG2 = loadImage(enemyC2.enemy1);
+        enemyIMGexpl2 = loadImage(enemyC2.enemy1expl);
 
         //laser
         laser = loadImage(laserC.laserPath);
@@ -99,11 +105,8 @@ public class Processing extends PApplet {
                 //System.out.println(i);
             //}
 
-<<<<<<< HEAD
            //delay(1000);
-=======
-            delay(0);
->>>>>>> 751bacf27292924a6dd413342e3fc135620b9566
+
             if (shipC.shipX + 70 > enemyC.enemyX + 30 && shipC.shipX + 70 < enemyC.enemyX + 100) {
                //change enemy to dead
                 image(enemyIMGexpl, enemyC.enemyX, enemyC.enemyY, 140, 100);
@@ -111,6 +114,12 @@ public class Processing extends PApplet {
                 cntup = true;
             }
 
+            if (shipC.shipX + 70 > enemyC2.enemyX + 30 && shipC.shipX + 70 < enemyC2.enemyX + 100) {
+               //change enemy to dead
+                image(enemyIMGexpl2, enemyC2.enemyX, enemyC2.enemyY, 140, 100);
+                isShot = true;
+                cntup = true;
+            }
 
         }
 
@@ -119,7 +128,7 @@ public class Processing extends PApplet {
             if (cntup) {
                 lastPosX = shipC.shipX;
                 enemyC.enemyX = (int)(Math.random() * 800 + 300);
-            
+                enemyC2.enemyX = (int)(Math.random() * 700 + 200)+100;
                 //img ändern bei gewissem score und endsrceen
                 if (scoreC.cnt == 0) {
                     enemyIMG = loadImage(enemyC.enemy2);
@@ -131,8 +140,14 @@ public class Processing extends PApplet {
                     enemyIMG = loadImage(enemyC.enemy3);
                     enemyIMGexpl = loadImage(enemyC.enemy3expl);
                     background = loadImage("images/backgroundIMG3.png");
+
+                    enemyIMG2 = loadImage(enemyC2.enemy3);
+                    enemyIMGexpl2 = loadImage(enemyC2.enemy3expl);
+                     secondShip = true;
+
+
                 }
-                if (scoreC.cnt == 2){
+                if (scoreC.cnt == 3){
                     shipC.shipY = -1000;
                     enemyC.enemyY = -1000;
                     openEnd();
@@ -151,6 +166,11 @@ public class Processing extends PApplet {
         //wenn sich das raumschif wieder bewegt wird ein neuer gegner gesetzt
         if(shipC.shipX != lastPosX){
             image(enemyIMG, enemyC.enemyX, enemyC.enemyY, 140, 100);
+
+            if(secondShip){
+                image(enemyIMG2, enemyC2.enemyX, enemyC2.enemyY, 140, 100);
+            }
+            
         }
 }
     /**
