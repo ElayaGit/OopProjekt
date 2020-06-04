@@ -30,7 +30,7 @@ public class endscreen extends PApplet {
     @Override
     public void setup() {
         background(0);
-        font = createFont("ethnocentric", 30);
+        font = createFont("ethnocentric/ethnocentric rg it.ttf", 30);
         bg = loadImage("images/endscreenIMG.png");
 
         cp5 = new ControlP5(this);

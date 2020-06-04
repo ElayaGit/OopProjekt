@@ -35,7 +35,7 @@ public class Button extends PApplet {
 
     @Override
     public void setup() {
-        font = createFont("ethnocentric", 30);
+        font = createFont("ethnocentric/ethnocentric rg it.ttf", 30);
         bg = loadImage("images/menuBgf.png");
 
         cp5 = new ControlP5(this);

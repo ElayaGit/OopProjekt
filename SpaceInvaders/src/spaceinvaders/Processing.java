@@ -1,10 +1,14 @@
 package spaceinvaders;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
 import processing.core.*;
 
 public class Processing extends PApplet {
     
-
     PImage background;
     PFont font;
     // spaceship
@@ -36,17 +40,18 @@ public class Processing extends PApplet {
 
     //for the fire animation
     boolean changeShip;
-
-
+    
+    
     @Override
     public void settings() {
         size(1900, 900);
+       
     }
 
    
     @Override
     public void setup() {
-
+        
         //spaceship
         spaceship1 = loadImage(shipC.spaceshipPath);
        
@@ -94,7 +99,7 @@ public class Processing extends PApplet {
                 //System.out.println(i);
             //}
 
-            delay(1000);
+            delay(0);
             if (shipC.shipX + 70 > enemyC.enemyX + 30 && shipC.shipX + 70 < enemyC.enemyX + 100) {
                //change enemy to dead
                 image(enemyIMGexpl, enemyC.enemyX, enemyC.enemyY, 140, 100);
@@ -148,7 +153,7 @@ public class Processing extends PApplet {
     because of the text it is not posible to change the score in the score class
     */
     public void displayScore() {
-        font = createFont("ethnocentric", 30);
+        font = createFont("ethnocentric/ethnocentric rg it.ttf", 30);
         int scoreColor = color(255, 215, 0, 256);
         fill(0);
         rect(6, 6, 290, 160);
