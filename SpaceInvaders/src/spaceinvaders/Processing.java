@@ -10,7 +10,7 @@ public class Processing extends PApplet {
     PFont font;
     // spaceship
     PImage spaceship1,spaceship2;
-    spaceshipClass shipC = new spaceshipClass(800, 650);
+    spaceshipClass shipC = new spaceshipClass(800, 650,"images/space1.png");
 
     // enemy 
     PImage enemyIMG,enemyIMGexpl;
@@ -18,7 +18,7 @@ public class Processing extends PApplet {
 
     //laser
     PImage laser;
-    laserClass laserC = new laserClass(10, 900);
+    laserClass laserC = new laserClass(10, 900,"images/laser.png");
 
     //score
     scoreClass scoreC = new scoreClass(30, 100, 0);
@@ -43,18 +43,21 @@ public class Processing extends PApplet {
         size(1900, 900);
     }
 
+   
     @Override
     public void setup() {
-        background(0);
+ 
+
         //spaceship
-        spaceship1 = loadImage("images/space1.png");
-       // spaceship2 = loadImage("images/space2.png");
-        //shipC.setup();
+        spaceship1 = loadImage(shipC.spaceshipPath);
+       
+      
         //enemy
-        enemyIMG = loadImage("images/space3.png");
-        enemyIMGexpl = loadImage("images/space3expl.png");
+        enemyIMG = loadImage(enemyC.enemy1);
+        enemyIMGexpl = loadImage(enemyC.enemy1expl);
+
         //laser
-        laser = loadImage("images/laser.png");
+        laser = loadImage(laserC.laserPath);
         //startCounter();
 
         //background
@@ -73,7 +76,7 @@ public class Processing extends PApplet {
         move();
         // shoot method iscalled to shoot a bullet
         shoot();
-
+        
             image(spaceship1, shipC.shipX, shipC.shipY, 150, 150);
           
        
@@ -112,14 +115,14 @@ public class Processing extends PApplet {
             
                 //img ändern bei gewissem score und endsrceen
                 if (scoreC.cnt == 0) {
-                    enemyIMG = loadImage("images/space4.png");
-                    enemyIMGexpl = loadImage("images/space4expl.png");
+                    enemyIMG = loadImage(enemyC.enemy2);
+                    enemyIMGexpl = loadImage(enemyC.enemy2expl);
                     background = loadImage("images/backgroundIMG2.png");
                 }
 
                 if (scoreC.cnt == 1) {
-                    enemyIMG = loadImage("images/space5.png");
-                    enemyIMGexpl = loadImage("images/space5expl.png");
+                    enemyIMG = loadImage(enemyC.enemy3);
+                    enemyIMGexpl = loadImage(enemyC.enemy3expl);
                     background = loadImage("images/backgroundIMG3.png");
                 }
                 if (scoreC.cnt == 2){
