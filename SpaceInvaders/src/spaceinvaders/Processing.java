@@ -110,10 +110,21 @@ public class Processing extends PApplet {
                 lastPosX = shipC.shipX;
                 enemyC.enemyX = (int)(Math.random() * 800 + 300);
             
-                //img ändern bei gewissem score
-                if (scoreC.cnt == 9) {
+                //img ändern bei gewissem score und endsrceen
+                if (scoreC.cnt == 1) {
                     enemyIMG = loadImage("images/space4.png");
                     enemyIMGexpl = loadImage("images/space4expl.png");
+                    background = loadImage("images/backgroundIMG2.png");
+                }
+
+                if (scoreC.cnt == 2) {
+                    enemyIMG = loadImage("images/space5.png");
+                    enemyIMGexpl = loadImage("images/space5expl.png");
+                    background = loadImage("images/backgroundIMG3.png");
+                }
+                if(scoreC.cnt == 3){
+                    shipC.shipY = -1000;
+                    openEnd();
                 }
 
                 scoreC.cnt++;
@@ -138,10 +149,10 @@ public class Processing extends PApplet {
     */
     public void displayScore() {
         font = createFont("ethnocentric", 30);
-        int blueColor = color(109, 181, 211, 256);
+        int scoreColor = color(255, 215, 0, 256);
         fill(0);
         rect(6, 6, 290, 160);
-        fill(blueColor);
+        fill(scoreColor);
         textSize(50);
         textFont(font);
         text("Score: " +scoreC.cnt, scoreC.scoreX, scoreC.scoreY);
@@ -199,7 +210,14 @@ public class Processing extends PApplet {
     }, 2*60*1000);
     
     }
+
 */
+/**
+opens the end screen
+*/
+     public void openEnd() {
+        Processing.main("spaceinvaders.endscreen");
+    }
 
 
 }
