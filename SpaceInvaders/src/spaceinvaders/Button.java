@@ -22,6 +22,7 @@ public class Button extends PApplet {
 
     //color
     int c = color(0, 0, 0, 198);
+    int cPlus = color(0, 0, 0, 255);
     int cHover = color(0, 0, 0, 180);
 
 

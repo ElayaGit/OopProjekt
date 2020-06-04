@@ -5,9 +5,12 @@ import java.util.Timer;
 //import processing.sound.*;
 public class Processing extends PApplet {
     Timer timer = new Timer();
+
+    PImage background;
+    PFont font;
     // spaceship
     PImage spaceship1,spaceship2;
-    spaceshipClass shipC = new spaceshipClass(800, 700);
+    spaceshipClass shipC = new spaceshipClass(800, 650);
 
     // enemy 
     PImage enemyIMG,enemyIMGexpl;
@@ -15,10 +18,10 @@ public class Processing extends PApplet {
 
     //laser
     PImage laser;
-    laserClass laserC = new laserClass(10, 1070);
+    laserClass laserC = new laserClass(10, 900);
 
     //score
-    scoreClass scoreC = new scoreClass(100, 100, 0);
+    scoreClass scoreC = new scoreClass(30, 100, 0);
 
     //button
     Button button = new Button();
@@ -43,9 +46,8 @@ public class Processing extends PApplet {
     @Override
     public void setup() {
         background(0);
-
         //spaceship
-        spaceship1 = loadImage("images/rocket.gif");
+        spaceship1 = loadImage("images/space1.png");
        // spaceship2 = loadImage("images/space2.png");
         //shipC.setup();
         //enemy
@@ -55,6 +57,10 @@ public class Processing extends PApplet {
         laser = loadImage("images/laser.png");
         //startCounter();
 
+        //background
+        background = loadImage("images/backgroundIMG.png");
+
+        background(background);
     }
 
     @Override
@@ -105,8 +111,9 @@ public class Processing extends PApplet {
                 enemyC.enemyX = (int)(Math.random() * 800 + 300);
             
                 //img ändern bei gewissem score
-                if (scoreC.cnt == 1) {
-                    //img ändern
+                if (scoreC.cnt == 9) {
+                    enemyIMG = loadImage("images/space4.png");
+                    enemyIMGexpl = loadImage("images/space4expl.png");
                 }
 
                 scoreC.cnt++;
@@ -130,10 +137,13 @@ public class Processing extends PApplet {
     because of the text it is not posible to change the score in the score class
     */
     public void displayScore() {
-        fill(200);
-        rect(0, 0, 400, 130);
-        fill(255);
+        font = createFont("ethnocentric", 30);
+        int blueColor = color(109, 181, 211, 256);
+        fill(0);
+        rect(6, 6, 290, 160);
+        fill(blueColor);
         textSize(50);
+        textFont(font);
         text("Score: " +scoreC.cnt, scoreC.scoreX, scoreC.scoreY);
     }
 // +button.getUsername()
@@ -157,14 +167,14 @@ public class Processing extends PApplet {
 
         if (keyPressed && keyCode == LEFT) {
             shipC.shipX -= 5;
-            background(0);
+            background(background);
         }
 
         //move right
 
         if (keyPressed && keyCode == RIGHT) {
             shipC.shipX += 5;
-            background(0);
+            background(background);
         }
 
         //  move to the other side 
