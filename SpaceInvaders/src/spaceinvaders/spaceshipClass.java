@@ -12,7 +12,6 @@ public class spaceshipClass extends PApplet {
  
 
     public spaceshipClass(int shipX, int shipY,String spaceshipPath) {
-
         this.shipX = shipX;
         this.shipY = shipY;
         this.spaceshipPath = spaceshipPath; 

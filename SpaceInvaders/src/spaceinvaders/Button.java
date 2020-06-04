@@ -39,6 +39,16 @@ public class Button extends PApplet {
         bg = loadImage("images/menuBgf.png");
 
         cp5 = new ControlP5(this);
+
+        cp5.addBang("submit")
+            .setCaptionLabel("")
+            .setPosition(button_x1, button_y1)
+            .setColorBackground(color(c))
+            .setSize(button_x2, button_y2)
+            .setColorForeground(color(c))
+            .setColorActive(cHover); 
+
+
         cp5.addTextfield("name")
             .setCaptionLabel("")
             .setPosition(200, 600)
@@ -52,15 +62,7 @@ public class Button extends PApplet {
         
 
 
-        cp5.addBang("submit")
-            .setCaptionLabel("")
-            .setPosition(button_x1, button_y1)
-            .setColorBackground(color(c))
-            .setSize(button_x2, button_y2)
-            .setColorForeground(color(c))
-            .setColorActive(cHover); 
         
-        //Processing pr = new Processing();
     }
 
     @Override

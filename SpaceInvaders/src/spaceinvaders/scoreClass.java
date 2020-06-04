@@ -12,6 +12,7 @@ public class scoreClass extends PApplet {
 
         this.scoreX = scoreX;
         this.scoreY = scoreY;
+        this.cnt = cnt;
 
     }
 

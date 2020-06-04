@@ -1,15 +1,14 @@
 package spaceinvaders;
 import java.util.Random;
 import processing.core.*;
-import java.util.Timer;
-//import processing.sound.*;
+
 public class Processing extends PApplet {
-    Timer timer = new Timer();
+    
 
     PImage background;
     PFont font;
     // spaceship
-    PImage spaceship1,spaceship2;
+    PImage spaceship1;
     spaceshipClass shipC = new spaceshipClass(800, 650,"images/space1.png");
 
     // enemy 
@@ -25,6 +24,7 @@ public class Processing extends PApplet {
 
     //button
     Button button = new Button();
+
     // is shot
     boolean isShot = false;
 
@@ -46,19 +46,17 @@ public class Processing extends PApplet {
    
     @Override
     public void setup() {
- 
 
         //spaceship
         spaceship1 = loadImage(shipC.spaceshipPath);
        
-      
         //enemy
         enemyIMG = loadImage(enemyC.enemy1);
         enemyIMGexpl = loadImage(enemyC.enemy1expl);
 
         //laser
         laser = loadImage(laserC.laserPath);
-        //startCounter();
+        
 
         //background
         background = loadImage("images/backgroundIMG.png");
@@ -134,8 +132,7 @@ public class Processing extends PApplet {
                 cntup = false;
             }
 
-            //delay(1000);
-            //background(0);
+            
         }
         
         displayScore();
@@ -161,16 +158,7 @@ public class Processing extends PApplet {
         text("Score: " +scoreC.cnt, scoreC.scoreX, scoreC.scoreY);
     }
 // +button.getUsername()
-    /** is it needet?
-     */
-    public void bullet() {
-        //int bulletX1 = shipC.shipX;
-        //int bulletX2 = 100;
 
-        //int bulletY1 = shipC.shipY;
-        //int bulletY2 = 200;
-
-    }
     /**
     moves the spaceShip
     */
@@ -201,20 +189,8 @@ public class Processing extends PApplet {
         }
 
     }
-/*
-    public void startCounter(){
 
-    
-    timer.schedule(new TimerTask() {
-    @Override
-        public void run() {
-        Processing.main("spaceinvaders.Button");
-        }
-    }, 2*60*1000);
-    
-    }
 
-*/
 /**
 opens the end screen
 */
