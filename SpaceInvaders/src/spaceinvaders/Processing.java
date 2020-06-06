@@ -16,6 +16,9 @@ public class Processing extends PApplet {
     int sec = second();
     int lasttime = second();
     int timeinterval = 0;
+    int plusSec = 60;
+    int plusSecNum = 0;
+    int storeS = 0;
     // spaceship
     PImage spaceship1;
     spaceshipClass shipC = new spaceshipClass(800, 650,"images/space1.png");
@@ -89,27 +92,14 @@ public class Processing extends PApplet {
         move();
         // shoot method iscalled to shoot a bullet
         shoot();
-        
-            image(spaceship1, shipC.shipX, shipC.shipY, 150, 150);
-            /*int s = second();  // Values from 0 - 59
-            int m = minute();  // Values from 0 - 59
-            int h = hour();    // Values from 0 - 23
-            String sn = String.valueOf(s);
-            text(s, 10, 28);
-            line(s, 0, s, 33);
-            line(m, 33, m, 66);
-            line(h, 66, h, 100);
-            System.out.println();*/
-            String ab = "LEVEL 2\n MOVE";
-            int s = second();
-            int diff = s - sec;
-            text(diff , 10, 28);
-            if(scoreC.cnt == 2){
-                text(ab, 800, 400);
-                enemyIMG2 = loadImage(enemyC2.enemy1);
-        enemyIMGexpl2 = loadImage(enemyC2.enemy1expl);
+        //counts and displys the seconds
+        time();
 
-            }
+        image(spaceship1, shipC.shipX, shipC.shipY, 150, 150);
+
+            
+            
+            
             
     }
     
@@ -171,6 +161,13 @@ public class Processing extends PApplet {
 
                 }
                 if (scoreC.cnt == 3){
+                    shipC.shipY = -1000;
+                    enemyC.enemyY = -1000;
+                    openEnd();
+                }
+
+            //wenn die zeit aus ist dann wird das du hast verlohren ausgegeben
+                if (this.storeS >= 30){
                     shipC.shipY = -1000;
                     enemyC.enemyY = -1000;
                     openEnd();
@@ -244,6 +241,26 @@ public class Processing extends PApplet {
     }
 
 
+    public void time(){
+            String ab = "LEVEL 2\n MOVE";
+            int s = second();
+            int diff = s - sec + (plusSecNum * plusSec);
+            this.storeS = diff;
+            text(diff , 10, 28);
+
+            if(s == 0 && s % 60 == 0){
+                this.plusSecNum++;
+                delay(1000);
+            }
+/*
+            if(scoreC.cnt == 2){
+                text(ab, 800, 400);
+                delay(1000);
+                ab = " ";
+                text(ab, 800, 400);
+            }
+*/
+        }
 /**
 opens the end screen
 */
