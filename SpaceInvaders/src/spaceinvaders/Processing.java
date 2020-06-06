@@ -6,15 +6,19 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 import processing.core.*;
+import java.util.Timer;
 
 public class Processing extends PApplet {
     
     PImage background;
     PFont font;
+    int now = 1;
+    int sec = second();
+    int lasttime = second();
+    int timeinterval = 0;
     // spaceship
     PImage spaceship1;
     spaceshipClass shipC = new spaceshipClass(800, 650,"images/space1.png");
-
     // enemy 
     PImage enemyIMG,enemyIMGexpl,enemyIMG2,enemyIMGexpl2;
     enemyClass enemyC = new enemyClass(800, 200);
@@ -87,10 +91,22 @@ public class Processing extends PApplet {
         shoot();
         
             image(spaceship1, shipC.shipX, shipC.shipY, 150, 150);
-          
-       
+            /*int s = second();  // Values from 0 - 59
+            int m = minute();  // Values from 0 - 59
+            int h = hour();    // Values from 0 - 23
+            String sn = String.valueOf(s);
+            text(s, 10, 28);
+            line(s, 0, s, 33);
+            line(m, 33, m, 66);
+            line(h, 66, h, 100);
+            System.out.println();*/
+            int s = second();
+            int diff = s - sec;
+            text(diff , 10, 28);
+            
     }
-
+    
+        
     /******************************************************************************/
 
     //methodes
@@ -111,7 +127,7 @@ public class Processing extends PApplet {
                //change enemy to dead
                 image(enemyIMGexpl, enemyC.enemyX, enemyC.enemyY, 140, 100);
                 isShot = true;
-                cntup = true;
+                cntup = true;   
             }
 
             if (shipC.shipX + 70 > enemyC2.enemyX + 30 && shipC.shipX + 70 < enemyC2.enemyX + 100) {
