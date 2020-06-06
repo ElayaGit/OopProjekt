@@ -19,6 +19,7 @@ public class Processing extends PApplet {
     int plusSec = 60;
     int plusSecNum = 0;
     int storeS = 0;
+    int level = 1;
     // spaceship
     PImage spaceship1;
     spaceshipClass shipC = new spaceshipClass(800, 650,"images/space1.png");
@@ -147,6 +148,7 @@ public class Processing extends PApplet {
                     enemyIMG = loadImage(enemyC.enemy2);
                     enemyIMGexpl = loadImage(enemyC.enemy2expl);
                     background = loadImage("images/backgroundIMG2.png");
+                    this.level++;
                 }
 
                 if (scoreC.cnt == 1) {
@@ -156,8 +158,8 @@ public class Processing extends PApplet {
 
                     enemyIMG2 = loadImage(enemyC2.enemy3);
                     enemyIMGexpl2 = loadImage(enemyC2.enemy3expl);
-                     secondShip = true;
-
+                    secondShip = true;
+                    this.level++;
 
                 }
                 if (scoreC.cnt == 3){
@@ -167,11 +169,7 @@ public class Processing extends PApplet {
                 }
 
             //wenn die zeit aus ist dann wird das du hast verlohren ausgegeben
-                if (this.storeS >= 30){
-                    shipC.shipY = -1000;
-                    enemyC.enemyY = -1000;
-                    openEnd();
-                }
+                
 
                 scoreC.cnt++;
                 cntup = false;
@@ -242,7 +240,7 @@ public class Processing extends PApplet {
 
 
     public void time(){
-            String ab = "LEVEL 2\n MOVE";
+            String ab = "LEVEL"+level+"\n MOVE";
             int s = second();
             int diff = s - sec + (plusSecNum * plusSec);
             this.storeS = diff;
@@ -260,6 +258,13 @@ public class Processing extends PApplet {
                 text(ab, 800, 400);
             }
 */
+
+            if (this.storeS >= 31){
+                    shipC.shipY = -1000;
+                    enemyC.enemyY = -1000;
+                    openEndLost();
+                    delay(500000);
+                }
         }
 /**
 opens the end screen
@@ -267,6 +272,9 @@ opens the end screen
      public void openEnd() {
         Processing.main("spaceinvaders.endscreen");
     }
-
+        
+    public void openEndLost() {
+        Processing.main("spaceinvaders.endscreenLost");
+    }
 
 }
