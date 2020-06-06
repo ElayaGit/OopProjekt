@@ -100,9 +100,16 @@ public class Processing extends PApplet {
             line(m, 33, m, 66);
             line(h, 66, h, 100);
             System.out.println();*/
+            String ab = "LEVEL 2\n MOVE";
             int s = second();
             int diff = s - sec;
             text(diff , 10, 28);
+            if(scoreC.cnt == 2){
+                text(ab, 800, 400);
+                enemyIMG2 = loadImage(enemyC2.enemy1);
+        enemyIMGexpl2 = loadImage(enemyC2.enemy1expl);
+
+            }
             
     }
     
