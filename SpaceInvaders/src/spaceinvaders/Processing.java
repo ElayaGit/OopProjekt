@@ -7,6 +7,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 import java.util.Timer;
+import java.io.File;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 public class Processing extends PApplet {
     
@@ -20,9 +26,10 @@ public class Processing extends PApplet {
     int level = 1;
     int scoreColor = 0;
     String user = "userN";
+
     // spaceship
     PImage spaceship1;
-    spaceshipClass shipC = new spaceshipClass(800, 650,"images/space1.png",5);
+    spaceshipClass shipC = new spaceshipClass(800, 650,"images/space1.png",10);
 
     // enemy 
     PImage enemyIMG,enemyIMGexpl,enemyIMG2,enemyIMGexpl2;
@@ -56,16 +63,16 @@ public class Processing extends PApplet {
     //second ship
     boolean secondShip = false;
     
+    //checks if the game has ended
+    boolean endGame = false;
 
     public Processing(){
-}
+    }
 
     @Override
     public void settings() {
         size(1900, 900);
-       
     }
-
    
     @Override
     public void setup() {
@@ -97,6 +104,7 @@ public class Processing extends PApplet {
     @Override
     public void draw() {
 
+    if(!endGame){
         // move method is called to move the spaceship
         move();
         // shoot method iscalled to shoot a bullet
@@ -107,6 +115,7 @@ public class Processing extends PApplet {
         image(spaceship1, shipC.shipX, shipC.shipY, 150, 150); 
         System.out.println(buttonC.user);
     }
+}
     
         
     /******************************************************************************/
@@ -129,6 +138,7 @@ it is called in the draw method
                //change enemy to dead
                 isShot = true;
                 cntup = true;   
+                playMusic("src/sounds/shoot_01.wav");
 
             }
            
@@ -138,8 +148,8 @@ it is called in the draw method
         if (isShot) {
             
             if (cntup) {
+            playMusic("src/sounds/boom.wav");
                 image(enemyIMGexpl, enemyC.enemyX, enemyC.enemyY, 140, 100);
-         
             //enemyIMG = loadImage(enemyC.enemy1expl);
                 lastPosX = shipC.shipX;
                 enemyC.enemyX = (int)(Math.random() * 800 + 300);
@@ -151,6 +161,7 @@ it is called in the draw method
                     background = loadImage("images/backgroundIMG2.png");
                     this.level++;
                     lvl();
+                    shipC.speed = 15;
                 }
 
                 if (scoreC.cnt == 5) {
@@ -163,7 +174,7 @@ it is called in the draw method
                    // secondShip = true;
                     this.level++;
                     lvl();
-
+                    shipC.speed = 20;
                 }
             //as soon as the player reaches a score the game stops and the player won
                 if (scoreC.cnt == 8){
@@ -269,22 +280,42 @@ the diff is shown in the top right corner
             }
 
             
-            if (this.storeS >= 31 && !won){
+        if (this.storeS >= 60 && !won){
                     shipC.shipY = -1000;
                     enemyC.enemyY = -1000;
                     openEndLost();
                     delay(500000);
                 }
         }
+
+    public void playMusic(String musicLocation) {
+        try {
+            File file = new File(musicLocation).getAbsoluteFile();
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
+
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
+
 /**
 opens the end screen
 */
      public void openEndWon() {
+       
+        endGame = true;
         Processing.main("spaceinvaders.endscreen");
     }
         
     public void openEndLost() {
+        endGame = true;
         Processing.main("spaceinvaders.endscreenLost");
+        
     }
 
 }

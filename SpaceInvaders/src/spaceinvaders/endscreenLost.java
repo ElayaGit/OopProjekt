@@ -71,7 +71,7 @@ public class endscreenLost extends PApplet {
         fill(255);
         textSize(40);
         textFont(font);
-        text("You lost", button_x1 + 60, button_y1 + 60);  
+        text("retry", button_x1 + 60, button_y1 + 60);  
     }
 
     public void exitButton() {
@@ -103,7 +103,7 @@ exits te Game
 the openGame Method if for opening the game useing Processing
 */
     public void openGame() {
-        Processing.main("spaceinvaders.Processing");
+        Processing.main("spaceinvaders.Button");
     }
 }
 

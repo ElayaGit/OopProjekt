@@ -106,6 +106,6 @@ exits te Game
 the openGame Method if for opening the game useing Processing
 */
     public void openGame() {
-        Processing.main("spaceinvaders.Processing");
+        Processing.main("spaceinvaders.Button");
     }
 }

@@ -17,16 +17,17 @@ public class Button extends PApplet {
     //background Image
     PImage bg;
     //position for the button
-    int button_x1 = 170;
-    int button_x2 = 260;
+    int button_x1 = 200;
+    int button_x2 = 90;
     int button_y1 = 400;
-    int button_y2 = 100;
+    int button_y2 = 80;
 
     //color
     int c = color(0, 0, 0, 198);
     int cPlus = color(0, 0, 0, 255);
     int cHover = color(0, 0, 0, 180);
 
+    public int time = 10;
 
     public Button(){
     }
@@ -42,9 +43,24 @@ public class Button extends PApplet {
 
         cp5 = new ControlP5(this);
 
-        cp5.addBang("submit")
+
+
+//30 Seconds 
+        cp5.addBang("play30s")
             .setCaptionLabel("")
-            .setPosition(button_x1, button_y1)
+            .setPosition(button_x1, button_y1+100)
+            .setColorBackground(color(c))
+            .setSize(button_x2, button_y2)
+            .setColorForeground(color(c))
+            .setColorActive(cHover); 
+
+       
+
+
+//60 Seconds 
+        cp5.addBang("play60s")
+            .setCaptionLabel("")
+            .setPosition(button_x1 + button_x2+20, button_y1+100)
             .setColorBackground(color(c))
             .setSize(button_x2, button_y2)
             .setColorForeground(color(c))
@@ -65,13 +81,15 @@ public class Button extends PApplet {
 
 
         
-    }
+    } 
 
     @Override
     public void draw() {
         //calls background and the button
         background(bg);
-        button();
+        textDraw("PLAY",button_x1+40,button_y1+80);
+        textDraw("30",button_x1+15,button_y1+150);
+        textDraw("60",button_x1+125,button_y1+150);
         getUsername();
         // System.out.println("X: "+mouseX+"Y: "+mouseY);
     }
@@ -82,43 +100,51 @@ public class Button extends PApplet {
 /**
 the button method is for the text "inside" the submit button
 */
-    public void button() {
+    public void textDraw(String text,int posX,int posY) {
 
         fill(255);
         textSize(40);
         textFont(font);
-        text("New Game", button_x1 + 10, button_y1 + 60);
-       
+        text(text, posX,posY);
     }
 
-/*
-if the mouse button is pressed it checks if the click is within the button 
-then it opens the game and gets the Username
-*/
-    public void mousePressed() {
 
-        if ((mouseX > button_x1 && mouseX < (button_x1 + button_x2)) && (mouseY > button_y1 && mouseY < (button_y1 + button_y2))) {
-
-            //the game will not open until a name has been entered
-            if(getUsername().length() >= 1 ){
-                openGame();
-            }
-            
-        }
-    }
 /*
 the openGame Method if for opening the game useing Processing
 */
     public void openGame() {
         Processing.main("spaceinvaders.Processing");
     }
+
+/*
+if the mouse button is pressed it checks if the click is within the button 
+then it opens the game and gets the Username
+*/
+
+
+    public void play30s() {
+        if(getUsername().length() >= 1 ){
+            this.time = 30;
+            openGame();
+        
+    }
+}
+
+    public void play60s() {
+        if(getUsername().length() >= 1 ){
+            this.time = 30;
+            openGame();
+        }
+    }
+
+
+
 /*
 a Method that gets the Username of the player
 */
     public String getUsername() {
         user=cp5.get(Textfield.class, "name").getText();
         System.out.println(user);
-        this.user = "hanns";
         return user;
     }
 }
