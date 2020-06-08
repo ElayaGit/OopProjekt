@@ -11,6 +11,8 @@ public class endscreen extends PApplet {
     String user = "user";
     PImage bg;
 
+    Processing processingC = new Processing();
+
     int c = color(0, 0, 0, 198);
     int cPlus = color(0, 0, 0, 255);
     int cHover = color(0, 0, 0, 180);
@@ -31,7 +33,7 @@ public class endscreen extends PApplet {
     public void setup() {
         background(0);
         font = createFont("ethnocentric/ethnocentric rg it.ttf", 30);
-        bg = loadImage("images/endscreenIMG.png");
+        bg = loadImage("images/endscreenIMGWon.png");
 
         cp5 = new ControlP5(this);
        
@@ -64,13 +66,15 @@ public class endscreen extends PApplet {
         exitButton();
 
     }
-
+/**
+displays the button
+*/
     public void retryButton() {
 
         fill(255);
         textSize(40);
         textFont(font);
-        text("RETRY", button_x1 + 60, button_y1 + 60);  
+        text("retry", button_x1 + 60, button_y1 + 60);  
     }
 
     public void exitButton() {

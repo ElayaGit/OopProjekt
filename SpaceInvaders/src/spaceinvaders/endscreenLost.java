@@ -32,13 +32,13 @@ public class endscreenLost extends PApplet {
     public void setup() {
         background(0);
         font = createFont("ethnocentric/ethnocentric rg it.ttf", 30);
-        bg = loadImage("images/endscreenIMG.png");
+        bg = loadImage("images/endscreenIMGLost.png");
 
         cp5 = new ControlP5(this);
        
 
 
-        cp5.addBang("You Lost")
+        cp5.addBang("retry")
             .setCaptionLabel("")
             .setPosition(button_x1, button_y1)
             .setColorBackground(color(c))
@@ -71,7 +71,7 @@ public class endscreenLost extends PApplet {
         fill(255);
         textSize(40);
         textFont(font);
-        text("RETRY", button_x1 + 60, button_y1 + 60);  
+        text("You lost", button_x1 + 60, button_y1 + 60);  
     }
 
     public void exitButton() {

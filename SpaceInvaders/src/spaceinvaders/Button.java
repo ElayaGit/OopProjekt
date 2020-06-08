@@ -5,13 +5,15 @@ import controlP5.*;
 
 /**
 this is the Main menu
+it appears the moment you start the program
+
 */
 public class Button extends PApplet {
 
     ControlP5 cp5;
     String text;
     PFont font;
-    String user = "user";
+    String user = "userName";
     //background Image
     PImage bg;
     //position for the button
@@ -70,7 +72,7 @@ public class Button extends PApplet {
         //calls background and the button
         background(bg);
         button();
-
+        getUsername();
         // System.out.println("X: "+mouseX+"Y: "+mouseY);
     }
 
@@ -116,6 +118,7 @@ a Method that gets the Username of the player
     public String getUsername() {
         user=cp5.get(Textfield.class, "name").getText();
         System.out.println(user);
+        this.user = "hanns";
         return user;
     }
 }
