@@ -90,7 +90,7 @@ public class Button extends PApplet {
         textDraw("PLAY",button_x1+40,button_y1+80);
         textDraw("30",button_x1+15,button_y1+150);
         textDraw("60",button_x1+125,button_y1+150);
-        getUsername();
+        //getUsername();
         // System.out.println("X: "+mouseX+"Y: "+mouseY);
     }
 
@@ -122,19 +122,21 @@ then it opens the game and gets the Username
 */
 
 
-    public void play30s() {
+    public int play30s() {
         if(getUsername().length() >= 1 ){
-            this.time = 30;
             openGame();
+            this.time = 31;
         
-    }
+        }
+        return time;
 }
 
-    public void play60s() {
+    public int play60s() {
         if(getUsername().length() >= 1 ){
-            this.time = 30;
             openGame();
+            this.time = 61;
         }
+        return time;
     }
 
 

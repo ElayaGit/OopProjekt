@@ -60,6 +60,7 @@ public class Processing extends PApplet {
     
     //checks if the game is won in order to open the endscreen only one time 
     boolean won = false;
+
     //second ship
     boolean secondShip = false;
     
@@ -67,6 +68,7 @@ public class Processing extends PApplet {
     boolean endGame = false;
 
     public Processing(){
+    
     }
 
     @Override
@@ -195,7 +197,6 @@ it is called in the draw method
         
         displayScore();
         
-        
         //wenn sich das raumschif wieder bewegt wird ein neuer gegner gesetzt
         if(shipC.shipX != lastPosX){
             image(enemyIMG, enemyC.enemyX, enemyC.enemyY, 140, 100);
@@ -206,8 +207,7 @@ it is called in the draw method
     because of the text it is not posible to change the score in the score class
     */
     public void displayScore() {
-        
-        
+
         fill(0);
         rect(6, 6, 290, 160);
         fill(scoreColor);
@@ -227,7 +227,7 @@ displays the level your are playing
             String lvlSring = "LEVEL"+level+"\n MOVE";    
             text(lvlSring, 800, 400);
             lvlSring = " ";
-            delay(1000);
+            delay(500);
             text(lvlSring, 800, 400);
                 
     }
@@ -280,7 +280,7 @@ the diff is shown in the top right corner
             }
 
             
-        if (this.storeS >= 60 && !won){
+        if (this.storeS >= buttonC.time && !won){
                     shipC.shipY = -1000;
                     enemyC.enemyY = -1000;
                     openEndLost();
