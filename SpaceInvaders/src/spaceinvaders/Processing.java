@@ -15,7 +15,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
 public class Processing extends PApplet {
-    
+
     PImage background;
     PFont font;
 
@@ -29,16 +29,16 @@ public class Processing extends PApplet {
 
     // spaceship
     PImage spaceship1;
-    spaceshipClass shipC = new spaceshipClass(800, 650,"images/space1.png",10);
+    spaceshipClass shipC = new spaceshipClass(800, 650, "images/space1.png", 10);
 
     // enemy 
-    PImage enemyIMG,enemyIMGexpl,enemyIMG2,enemyIMGexpl2;
+    PImage enemyIMG, enemyIMGexpl, enemyIMG2, enemyIMGexpl2;
     enemyClass enemyC = new enemyClass(800, 200);
     enemyClass enemyC2 = new enemyClass(400, 240);
 
     //laser
     PImage laser;
-    laserClass laserC = new laserClass(10, 900,"images/laser.png");
+    laserClass laserC = new laserClass(10, 900, "images/laser.png");
 
     //score
     scoreClass scoreC = new scoreClass(30, 100, 0);
@@ -54,48 +54,48 @@ public class Processing extends PApplet {
 
     //last pos of ship
     int lastPosX = 0;
-    
+
     //for the fire animation
     boolean changeShip;
-    
+
     //checks if the game is won in order to open the endscreen only one time 
     boolean won = false;
 
     //second ship
     boolean secondShip = false;
-    
+
     //checks if the game has ended
     boolean endGame = false;
 
-    public Processing(){
-    
+    public Processing() {
+
     }
 
     @Override
     public void settings() {
         size(1900, 900);
     }
-   
+
     @Override
     public void setup() {
-        
+
         font = createFont("ethnocentric/ethnocentric rg it.ttf", 30);
         scoreColor = color(255, 215, 0, 256);
 
         //spaceship
         spaceship1 = loadImage(shipC.spaceshipPath);
-       
+
         //enemy
         enemyIMG = loadImage(enemyC.enemy1);
         enemyIMGexpl = loadImage(enemyC.enemy1expl);
-        
+
         //enemy 2
         enemyIMG2 = loadImage(enemyC2.enemy1);
         enemyIMGexpl2 = loadImage(enemyC2.enemy1expl);
 
         //laser
         laser = loadImage(laserC.laserPath);
-        
+
         //background
         background = loadImage("images/backgroundIMG.png");
 
@@ -106,30 +106,30 @@ public class Processing extends PApplet {
     @Override
     public void draw() {
 
-    if(!endGame){
-        // move method is called to move the spaceship
-        move();
-        // shoot method iscalled to shoot a bullet
-        shoot();
-        // counts and displys the seconds
-        time();
-        //draws the spaceship
-        image(spaceship1, shipC.shipX, shipC.shipY, 150, 150); 
-        System.out.println(buttonC.user);
+        if (!endGame) {
+            // move method is called to move the spaceship
+            move();
+            // shoot method iscalled to shoot a bullet
+            shoot();
+            // counts and displys the seconds
+            time();
+            //draws the spaceship
+            image(spaceship1, shipC.shipX, shipC.shipY, 150, 150);
+            System.out.println(buttonC.user);
+        }
     }
-}
-    
-        
+
+
     /******************************************************************************/
 
     //methodes
 
-/**
-the method is for shooting 
-it is called in the draw method
-*/
+    /**
+    the method is for shooting 
+    it is called in the draw method
+    */
     public void shoot() {
-        
+
         if (keyPressed && key == 32) {
             //the laser beam is drawn 
             image(laser, shipC.shipX + 70, -110, laserC.laserWidth, laserC.laserHeight);
@@ -137,26 +137,26 @@ it is called in the draw method
             //collition detection
             if (shipC.shipX + 70 > enemyC.enemyX + 30 && shipC.shipX + 70 < enemyC.enemyX + 100) {
 
-               //change enemy to dead
+                //change enemy to dead
                 isShot = true;
-                cntup = true;   
+                cntup = true;
                 playMusic("src/sounds/shoot_01.wav");
 
             }
-           
+
         }
 
         //checks if the ship is shot
         if (isShot) {
-            
+
             if (cntup) {
-            playMusic("src/sounds/boom.wav");
+                playMusic("src/sounds/boom.wav");
                 image(enemyIMGexpl, enemyC.enemyX, enemyC.enemyY, 140, 100);
-            //enemyIMG = loadImage(enemyC.enemy1expl);
+                //enemyIMG = loadImage(enemyC.enemy1expl);
                 lastPosX = shipC.shipX;
                 enemyC.enemyX = (int)(Math.random() * 800 + 300);
 
-            //img changes due to counter
+                //img changes due to counter
                 if (scoreC.cnt == 3) {
                     enemyIMG = loadImage(enemyC.enemy2);
                     enemyIMGexpl = loadImage(enemyC.enemy2expl);
@@ -171,22 +171,22 @@ it is called in the draw method
                     enemyIMGexpl = loadImage(enemyC.enemy3expl);
                     background = loadImage("images/backgroundIMG3.png");
 
-                   // enemyIMG2 = loadImage(enemyC2.enemy3);
-                   // enemyIMGexpl2 = loadImage(enemyC2.enemy3expl);
-                   // secondShip = true;
+                    // enemyIMG2 = loadImage(enemyC2.enemy3);
+                    // enemyIMGexpl2 = loadImage(enemyC2.enemy3expl);
+                    // secondShip = true;
                     this.level++;
                     lvl();
                     shipC.speed = 20;
                 }
-            //as soon as the player reaches a score the game stops and the player won
-                if (scoreC.cnt == 8){
+                //as soon as the player reaches a score the game stops and the player won
+                if (scoreC.cnt == 8) {
                     shipC.shipY = -1000;
                     enemyC.enemyY = -1000;
                     openEndWon();
                     won = true;
                 }
-                
-            //wenn die zeit aus ist dann wird das du hast verlohren ausgegeben
+
+                //wenn die zeit aus ist dann wird das du hast verlohren ausgegeben
 
                 scoreC.cnt++;
                 cntup = false;
@@ -194,14 +194,14 @@ it is called in the draw method
 
             isShot = false;
         }
-        
+
         displayScore();
-        
+
         //wenn sich das raumschif wieder bewegt wird ein neuer gegner gesetzt
-        if(shipC.shipX != lastPosX){
+        if (shipC.shipX != lastPosX) {
             image(enemyIMG, enemyC.enemyX, enemyC.enemyY, 140, 100);
         }
-}
+    }
     /**
     displays the score 
     because of the text it is not posible to change the score in the score class
@@ -213,23 +213,23 @@ it is called in the draw method
         fill(scoreColor);
         textSize(50);
         textFont(font);
-        
-        text("Score: " +scoreC.cnt, scoreC.scoreX, scoreC.scoreY);
-    }
-// +button.getUsername()
 
-/**
-displays the level your are playing
-*/
-    public void lvl(){
-            textFont(font);
-            fill(scoreColor);
-            String lvlSring = "LEVEL"+level+"\n MOVE";    
-            text(lvlSring, 800, 400);
-            lvlSring = " ";
-            delay(500);
-            text(lvlSring, 800, 400);
-                
+        text("Score: " + scoreC.cnt, scoreC.scoreX, scoreC.scoreY);
+    }
+    // +button.getUsername()
+
+    /**
+    displays the level your are playing
+    */
+    public void lvl() {
+        textFont(font);
+        fill(scoreColor);
+        String lvlSring = "LEVEL" + level + "\n MOVE";
+        text(lvlSring, 800, 400);
+        lvlSring = " ";
+        delay(500);
+        text(lvlSring, 800, 400);
+
     }
     /**
     moves the spaceShip
@@ -261,33 +261,36 @@ displays the level your are playing
 
     }
 
-/**
-this method checks the seconds and if certain time has passed thegame stopes => the player lost
-we get the seconds using second() and subracting the start time. 
-if the seconds reached 59 it sets back to 0 so we have to add 60 seconds to every minute that passes
-the diff is shown in the top right corner
-*/
-    public void time(){
-            
-            int s = second();
-            int diff = s - sec + (plusSecNum * plusSec);
-            this.storeS = diff;
-            text(diff , 10, 28);
+    /**
+    this method checks the seconds and if certain time has passed thegame stopes => the player lost
+    we get the seconds using second() and subracting the start time. 
+    if the seconds reached 59 it sets back to 0 so we have to add 60 seconds to every minute that passes
+    the diff is shown in the top right corner
+    */
+    public void time() {
 
-            if(s == 0 && s % 60 == 0){
-                this.plusSecNum++;
-                delay(1000);
-            }
+        int s = second();
+        int diff = s - sec + (plusSecNum * plusSec);
+        this.storeS = diff;
+        text(diff, 10, 28);
 
-            
-        if (this.storeS >= buttonC.time && !won){
-                    shipC.shipY = -1000;
-                    enemyC.enemyY = -1000;
-                    openEndLost();
-                    delay(500000);
-                }
+        if (s == 0 && s % 60 == 0) {
+            this.plusSecNum++;
+            delay(1000);
         }
 
+
+        if (this.storeS >= buttonC.time && !won) {
+            shipC.shipY = -1000;
+            enemyC.enemyY = -1000;
+            openEndLost();
+            delay(500000);
+        }
+    }
+
+    /**
+    this method is used for sound "pew" and "boom"
+    */
     public void playMusic(String musicLocation) {
         try {
             File file = new File(musicLocation).getAbsoluteFile();
@@ -303,19 +306,19 @@ the diff is shown in the top right corner
 
 
 
-/**
-opens the end screen
-*/
-     public void openEndWon() {
-       
+    /**
+    opens the end screen
+    */
+    public void openEndWon() {
+
         endGame = true;
         Processing.main("spaceinvaders.endscreen");
     }
-        
+
     public void openEndLost() {
         endGame = true;
         Processing.main("spaceinvaders.endscreenLost");
-        
+
     }
 
 }

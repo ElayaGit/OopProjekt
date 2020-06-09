@@ -36,7 +36,7 @@ public class endscreen extends PApplet {
         bg = loadImage("images/endscreenIMGWon.png");
 
         cp5 = new ControlP5(this);
-       
+
 
 
         cp5.addBang("submit")
@@ -45,16 +45,16 @@ public class endscreen extends PApplet {
             .setColorBackground(color(c))
             .setSize(button_x2, button_y2)
             .setColorForeground(color(c))
-            .setColorActive(cHover); 
-        
+            .setColorActive(cHover);
+
 
         cp5.addBang("exitGame")
             .setCaptionLabel("")
-            .setPosition(button_x1, button_y1+200)
+            .setPosition(button_x1, button_y1 + 200)
             .setColorBackground(color(c))
             .setSize(button_x2, button_y2)
             .setColorForeground(color(c))
-            .setColorActive(cHover); 
+            .setColorActive(cHover);
 
         background(bg);
     }
@@ -66,15 +66,15 @@ public class endscreen extends PApplet {
         exitButton();
 
     }
-/**
-displays the button
-*/
+    /**
+    displays the button
+    */
     public void retryButton() {
 
         fill(255);
         textSize(40);
         textFont(font);
-        text("retry", button_x1 + 60, button_y1 + 60);  
+        text("retry", button_x1 + 60, button_y1 + 60);
     }
 
     public void exitButton() {
@@ -82,29 +82,25 @@ displays the button
         fill(255);
         textSize(40);
         textFont(font);
-        text("Exit", button_x1 + 80, button_y1 + 260);  
+        text("Exit", button_x1 + 80, button_y1 + 260);
     }
 
-/**
-Opens a new game
-*/
+    /**
+    Opens a new game
+    */
     public void submit() {
-
-                openGame();
-                
+        openGame();
     }
-    
-/**
-exits te Game
-*/
+
+    /**
+    exits te Game
+    */
     public void exitGame() {
-
-                exit();
-                
+        exit();
     }
-/*
-the openGame Method if for opening the game useing Processing
-*/
+    /*
+    the openGame Method if for opening the game useing Processing
+    */
     public void openGame() {
         Processing.main("spaceinvaders.Button");
     }

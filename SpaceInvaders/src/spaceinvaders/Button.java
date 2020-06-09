@@ -6,7 +6,6 @@ import controlP5.*;
 /**
 this is the Main menu
 it appears the moment you start the program
-
 */
 public class Button extends PApplet {
 
@@ -29,8 +28,8 @@ public class Button extends PApplet {
 
     public int time = 10;
 
-    public Button(){
-    }
+    public Button() {}
+
     @Override
     public void settings() {
         size(600, 900);
@@ -45,28 +44,26 @@ public class Button extends PApplet {
 
 
 
-//30 Seconds 
+        //30 Seconds 
         cp5.addBang("play30s")
             .setCaptionLabel("")
-            .setPosition(button_x1, button_y1+100)
+            .setPosition(button_x1, button_y1 + 100)
             .setColorBackground(color(c))
             .setSize(button_x2, button_y2)
             .setColorForeground(color(c))
-            .setColorActive(cHover); 
-
-       
+            .setColorActive(cHover);
 
 
-//60 Seconds 
+        //60 Seconds 
         cp5.addBang("play60s")
             .setCaptionLabel("")
-            .setPosition(button_x1 + button_x2+20, button_y1+100)
+            .setPosition(button_x1 + button_x2 + 20, button_y1 + 100)
             .setColorBackground(color(c))
             .setSize(button_x2, button_y2)
             .setColorForeground(color(c))
-            .setColorActive(cHover); 
+            .setColorActive(cHover);
 
-
+        //name
         cp5.addTextfield("name")
             .setCaptionLabel("")
             .setPosition(200, 600)
@@ -76,63 +73,60 @@ public class Button extends PApplet {
             .setSize(200, 50)
             .setColorForeground(color(c))
             .setAutoClear(true)
-            .setColorActive(cHover); 
-        
+            .setColorActive(cHover);
 
 
-        
-    } 
+
+
+    }
 
     @Override
     public void draw() {
         //calls background and the button
         background(bg);
-        textDraw("PLAY",button_x1+40,button_y1+80);
-        textDraw("30",button_x1+15,button_y1+150);
-        textDraw("60",button_x1+125,button_y1+150);
-        //getUsername();
-        // System.out.println("X: "+mouseX+"Y: "+mouseY);
+        textDraw("PLAY", button_x1 + 40, button_y1 + 80);
+        textDraw("30", button_x1 + 15, button_y1 + 150);
+        textDraw("60", button_x1 + 125, button_y1 + 150);
+
     }
 
 
     /******************************************************************************/
     //Methods
-/**
-the button method is for the text "inside" the submit button
-*/
-    public void textDraw(String text,int posX,int posY) {
+    /**
+    the button method is for the text "inside" the submit button
+    */
+    public void textDraw(String text, int posX, int posY) {
 
         fill(255);
         textSize(40);
         textFont(font);
-        text(text, posX,posY);
+        text(text, posX, posY);
     }
 
 
-/*
-the openGame Method if for opening the game useing Processing
-*/
+    /*
+    the openGame Method if for opening the game useing Processing
+    */
     public void openGame() {
         Processing.main("spaceinvaders.Processing");
     }
 
-/*
-if the mouse button is pressed it checks if the click is within the button 
-then it opens the game and gets the Username
-*/
-
-
+    /*
+    if the mouse button is pressed it checks if the click is within the button 
+    then it opens the game and gets the Username
+    */
     public int play30s() {
-        if(getUsername().length() >= 1 ){
+        if (getUsername().length() >= 1) {
             openGame();
             this.time = 31;
-        
+
         }
         return time;
-}
+    }
 
     public int play60s() {
-        if(getUsername().length() >= 1 ){
+        if (getUsername().length() >= 1) {
             openGame();
             this.time = 61;
         }
@@ -141,11 +135,11 @@ then it opens the game and gets the Username
 
 
 
-/*
-a Method that gets the Username of the player
-*/
+    /*
+    a Method that gets the Username of the player
+    */
     public String getUsername() {
-        user=cp5.get(Textfield.class, "name").getText();
+        user = cp5.get(Textfield.class, "name").getText();
         System.out.println(user);
         return user;
     }
