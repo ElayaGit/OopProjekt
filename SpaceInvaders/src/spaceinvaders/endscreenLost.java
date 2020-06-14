@@ -83,7 +83,7 @@ public class endscreenLost extends PApplet {
     /**
     Opens a new game
     */
-    public void submit() {
+    public void retry() {
 
         openGame();
 

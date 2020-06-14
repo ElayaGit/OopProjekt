@@ -15,7 +15,5 @@ public class scoreClass extends PApplet {
         this.cnt = cnt;
 
     }
-public scoreClass(){
-}
 
 }
