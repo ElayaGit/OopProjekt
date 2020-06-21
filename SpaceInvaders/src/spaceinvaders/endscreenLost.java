@@ -19,8 +19,6 @@ public class endscreenLost extends PApplet {
     int button_y1 = 400;
     int button_y2 = 100;
 
-
-
     @Override
     public void settings() {
         size(600, 900);

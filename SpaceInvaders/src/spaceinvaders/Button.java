@@ -4,8 +4,8 @@ import processing.core.*;
 import controlP5.*;
 
 /**
-this is the Main menu
-it appears the moment you start the program
+    this is the main menu
+    it appears the moment you start the program
 */
 public class Button extends PApplet {
 
@@ -26,7 +26,7 @@ public class Button extends PApplet {
     int cPlus = color(0, 0, 0, 255);
     int cHover = color(0, 0, 0, 180);
 
-    public int time = 10;
+    public int time = 30;
 
     public Button() {}
 
@@ -39,10 +39,7 @@ public class Button extends PApplet {
     public void setup() {
         font = createFont("ethnocentric/ethnocentric rg it.ttf", 30);
         bg = loadImage("images/menuBgf.png");
-
         cp5 = new ControlP5(this);
-
-
 
         //30 Seconds 
         cp5.addBang("play30s")
@@ -93,6 +90,7 @@ public class Button extends PApplet {
 
     /******************************************************************************/
     //Methods
+
     /**
     the button method is for the text "inside" the submit button
     */
@@ -133,14 +131,11 @@ public class Button extends PApplet {
         return time;
     }
 
-
-
     /*
     a Method that gets the Username of the player
     */
     public String getUsername() {
         user = cp5.get(Textfield.class, "name").getText();
-        System.out.println(user);
         return user;
     }
 }

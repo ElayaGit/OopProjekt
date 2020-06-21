@@ -20,7 +20,7 @@ public class Processing extends PApplet {
     PFont font;
 
     int sec = second();
-    int plusSec = 60;
+    final int plusSec = 60;
     int plusSecNum = 0;
     int storeS = 0;
     int level = 1;
@@ -32,9 +32,8 @@ public class Processing extends PApplet {
     spaceshipClass shipC = new spaceshipClass(800, 650, "images/space1.png", 10);
 
     // enemy 
-    PImage enemyIMG, enemyIMGexpl, enemyIMG2, enemyIMGexpl2;
+    PImage enemyIMG, enemyIMGexpl;
     enemyClass enemyC = new enemyClass(800, 200);
-    enemyClass enemyC2 = new enemyClass(400, 240);
 
     //laser
     PImage laser;
@@ -89,9 +88,6 @@ public class Processing extends PApplet {
         enemyIMG = loadImage(enemyC.enemy1);
         enemyIMGexpl = loadImage(enemyC.enemy1expl);
 
-        //enemy 2
-        enemyIMG2 = loadImage(enemyC2.enemy1);
-        enemyIMGexpl2 = loadImage(enemyC2.enemy1expl);
 
         //laser
         laser = loadImage(laserC.laserPath);
@@ -115,32 +111,32 @@ public class Processing extends PApplet {
             time();
             //draws the spaceship
             image(spaceship1, shipC.shipX, shipC.shipY, 150, 150);
-            System.out.println(buttonC.user);
+           
         }
     }
 
 
     /******************************************************************************/
 
-    //methodes
+    //Methods
 
     /**
-    the method is for shooting 
-    it is called in the draw method
+        the method is for shooting 
+        it is called in the draw method
     */
     public void shoot() {
 
         if (keyPressed && key == 32) {
             //the laser beam is drawn 
             image(laser, shipC.shipX + 70, -110, laserC.laserWidth, laserC.laserHeight);
-
-            //collition detection
+            playMusic("src/sounds/shoot_01.wav");
+            //collision detection
             if (shipC.shipX + 70 > enemyC.enemyX + 30 && shipC.shipX + 70 < enemyC.enemyX + 100) {
 
                 //change enemy to dead
                 isShot = true;
                 cntup = true;
-                playMusic("src/sounds/shoot_01.wav");
+                
 
             }
 
@@ -152,12 +148,11 @@ public class Processing extends PApplet {
             if (cntup) {
                 playMusic("src/sounds/boom.wav");
                 image(enemyIMGexpl, enemyC.enemyX, enemyC.enemyY, 140, 100);
-                //enemyIMG = loadImage(enemyC.enemy1expl);
                 lastPosX = shipC.shipX;
                 enemyC.enemyX = (int)(Math.random() * 800 + 300);
 
                 //img changes due to counter
-                if (scoreC.cnt == 3) {
+                if (scoreC.cnt == 5) {
                     enemyIMG = loadImage(enemyC.enemy2);
                     enemyIMGexpl = loadImage(enemyC.enemy2expl);
                     background = loadImage("images/backgroundIMG2.png");
@@ -166,27 +161,22 @@ public class Processing extends PApplet {
                     shipC.speed = 15;
                 }
 
-                if (scoreC.cnt == 5) {
+                if (scoreC.cnt == 10) {
                     enemyIMG = loadImage(enemyC.enemy3);
                     enemyIMGexpl = loadImage(enemyC.enemy3expl);
                     background = loadImage("images/backgroundIMG3.png");
-
-                    // enemyIMG2 = loadImage(enemyC2.enemy3);
-                    // enemyIMGexpl2 = loadImage(enemyC2.enemy3expl);
-                    // secondShip = true;
                     this.level++;
                     lvl();
                     shipC.speed = 20;
                 }
-                //as soon as the player reaches a score the game stops and the player won
-                if (scoreC.cnt == 8) {
-                    shipC.shipY = -1000;
-                    enemyC.enemyY = -1000;
+
+                //as soon as the player reaches a certain score the game stops and the player won
+                if (scoreC.cnt == 15) {
                     openEndWon();
                     won = true;
                 }
 
-                //wenn die zeit aus ist dann wird das du hast verlohren ausgegeben
+                
 
                 scoreC.cnt++;
                 cntup = false;
@@ -279,17 +269,14 @@ public class Processing extends PApplet {
             delay(1000);
         }
 
-
+        //if the time is over the game stops and you lost
         if (this.storeS >= buttonC.time && !won) {
-            shipC.shipY = -1000;
-            enemyC.enemyY = -1000;
             openEndLost();
-            delay(500000);
         }
     }
 
     /**
-    this method is used for sound "pew" and "boom"
+        this method is used for sound "pew" and "boom"
     */
     public void playMusic(String musicLocation) {
         try {

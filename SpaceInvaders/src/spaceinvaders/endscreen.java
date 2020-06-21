@@ -11,8 +11,6 @@ public class endscreen extends PApplet {
     String user = "user";
     PImage bg;
 
-    Processing processingC = new Processing();
-
     int c = color(0, 0, 0, 198);
     int cPlus = color(0, 0, 0, 255);
     int cHover = color(0, 0, 0, 180);
@@ -34,9 +32,7 @@ public class endscreen extends PApplet {
         background(0);
         font = createFont("ethnocentric/ethnocentric rg it.ttf", 30);
         bg = loadImage("images/endscreenIMGWon.png");
-
         cp5 = new ControlP5(this);
-
 
 
         cp5.addBang("submit")
@@ -93,13 +89,13 @@ public class endscreen extends PApplet {
     }
 
     /**
-    exits te Game
+    exits the Game
     */
     public void exitGame() {
         exit();
     }
     /*
-    the openGame Method if for opening the game useing Processing
+    the openGame Method is for opening the game useing Processing
     */
     public void openGame() {
         Processing.main("spaceinvaders.Button");
